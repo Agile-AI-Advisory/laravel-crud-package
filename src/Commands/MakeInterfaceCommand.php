@@ -50,13 +50,12 @@ class MakeInterfaceCommand extends Command
 
         $contents = $this->getSourceFile();
 
-        if (!$this->files->exists($path)) {
+        if (! $this->files->exists($path)) {
             $this->files->put($path, $contents);
             $this->info("Interface created successfully");
         } else {
             $this->error("Interface already exits");
         }
-
     }
 
     /**
@@ -95,7 +94,6 @@ class MakeInterfaceCommand extends Command
         return $this->getStubContents($this->getStubPath(), $this->getStubVariables());
     }
 
-
     /**
      * Replace the stub variables(key) with the desire value
      *
@@ -103,17 +101,15 @@ class MakeInterfaceCommand extends Command
      * @param array $stubVariables
      * @return bool|mixed|string
      */
-    public function getStubContents($stub , $stubVariables = [])
+    public function getStubContents($stub, $stubVariables = [])
     {
         $contents = file_get_contents($stub);
 
-        foreach ($stubVariables as $search => $replace)
-        {
-            $contents = str_replace('{{ '.$search.' }}' , $replace, $contents);
+        foreach ($stubVariables as $search => $replace) {
+            $contents = str_replace('{{ '.$search.' }}', $replace, $contents);
         }
 
         return $contents;
-
     }
 
     /**

@@ -51,13 +51,12 @@ class MakeCrudControllerCommand extends Command
 
         $contents = $this->getSourceFile();
 
-        if (!$this->files->exists($path)) {
+        if (! $this->files->exists($path)) {
             $this->files->put($path, $contents);
             $this->info("Crud Controller created successfully");
         } else {
             $this->error("Crud Controller already exits");
         }
-
     }
 
     /**
@@ -98,7 +97,6 @@ class MakeCrudControllerCommand extends Command
         return $this->getStubContents($this->getStubPath(), $this->getStubVariables());
     }
 
-
     /**
      * Replace the stub variables(key) with the desire value
      *
@@ -106,17 +104,15 @@ class MakeCrudControllerCommand extends Command
      * @param array $stubVariables
      * @return bool|mixed|string
      */
-    public function getStubContents($stub , $stubVariables = [])
+    public function getStubContents($stub, $stubVariables = [])
     {
         $contents = file_get_contents($stub);
 
-        foreach ($stubVariables as $search => $replace)
-        {
-            $contents = str_replace('{{ '.$search.' }}' , $replace, $contents);
+        foreach ($stubVariables as $search => $replace) {
+            $contents = str_replace('{{ '.$search.' }}', $replace, $contents);
         }
 
         return $contents;
-
     }
 
     /**

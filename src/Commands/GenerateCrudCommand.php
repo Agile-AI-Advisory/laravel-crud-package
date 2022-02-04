@@ -39,7 +39,6 @@ class GenerateCrudCommand extends Command
     {
         $this->call('make:model', [
             'name' => $this->argument('name'),
-            '--requests' => true,
             '--migration' => true,
             '--factory' => true,
             '--seed' => true,
@@ -49,6 +48,14 @@ class GenerateCrudCommand extends Command
         $this->call('make:crud-controller', [
             'name' => $this->argument('name').'Controller',
             'model' => $this->argument('name'),
+        ]);
+
+        $this->call('make:request', [
+            'name' => $this->argument('name').'Request',
+        ]);
+
+        $this->call('make:resource', [
+            'name' => $this->argument('name').'Resource',
         ]);
 
         $this->call('make:interface', [

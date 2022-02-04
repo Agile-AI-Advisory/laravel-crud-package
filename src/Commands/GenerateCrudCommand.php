@@ -43,7 +43,7 @@ class GenerateCrudCommand extends Command
             '--migration' => true,
             '--factory' => true,
             '--seed' => true,
-            '--policy' => true
+            '--policy' => true,
         ]);
 
         $this->call('make:crud-controller', [
@@ -59,7 +59,7 @@ class GenerateCrudCommand extends Command
             'name' => $this->argument('name').'Repository',
             'model' => $this->argument('name'),
         ]);
+
         return 0;
     }
-
 }

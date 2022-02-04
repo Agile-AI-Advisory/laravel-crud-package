@@ -51,13 +51,12 @@ class MakeRepositoryCommand extends Command
 
         $contents = $this->getSourceFile();
 
-        if (!$this->files->exists($path)) {
+        if (! $this->files->exists($path)) {
             $this->files->put($path, $contents);
             $this->info("Repository created successfully");
         } else {
             $this->error("Repository already exits");
         }
-
     }
 
     /**
@@ -99,7 +98,6 @@ class MakeRepositoryCommand extends Command
         return $this->getStubContents($this->getStubPath(), $this->getStubVariables());
     }
 
-
     /**
      * Replace the stub variables(key) with the desire value
      *
@@ -107,17 +105,15 @@ class MakeRepositoryCommand extends Command
      * @param array $stubVariables
      * @return bool|mixed|string
      */
-    public function getStubContents($stub , $stubVariables = [])
+    public function getStubContents($stub, $stubVariables = [])
     {
         $contents = file_get_contents($stub);
 
-        foreach ($stubVariables as $search => $replace)
-        {
-            $contents = str_replace('{{ '.$search.' }}' , $replace, $contents);
+        foreach ($stubVariables as $search => $replace) {
+            $contents = str_replace('{{ '.$search.' }}', $replace, $contents);
         }
 
         return $contents;
-
     }
 
     /**

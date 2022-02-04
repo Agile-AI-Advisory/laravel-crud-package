@@ -1,17 +1,17 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "purrdigital/laravel-crud-package",
+    "description": "DO NOT DELETE. CRUD REPOSITORY PATTERN PACKAGE",
     "keywords": [
-        ":vendor_name",
+        "PurrDigital",
         "laravel",
-        ":package_slug"
+        "laravel-crud-package"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/PurrDigital/laravel-crud-package",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "James",
+            "email": "james.hayes@purrgroup.com",
             "role": "Developer"
         }
     ],
@@ -22,25 +22,20 @@
     },
     "require-dev": {
         "nunomaduro/collision": "^5.10",
-        "nunomaduro/larastan": "^1.0",
         "orchestra/testbench": "^6.22",
         "pestphp/pest": "^1.21",
         "pestphp/pest-plugin-laravel": "^1.1",
-        "phpstan/extension-installer": "^1.1",
-        "phpstan/phpstan-deprecation-rules": "^1.0",
-        "phpstan/phpstan-phpunit": "^1.0",
         "phpunit/phpunit": "^9.5",
         "spatie/laravel-ray": "^1.26"
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories"
+            "PurrDigital\\LaravelCrudPackage\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "PurrDigital\\LaravelCrudPackage\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -54,10 +49,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "PurrDigital\\LaravelCrudPackage\\LaravelCrudPackageServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "LaravelCrudPackage": "PurrDigital\\LaravelCrudPackage\\Facades\\LaravelCrudPackage"
             }
         }
     },

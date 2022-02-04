@@ -1,0 +1,14 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Interfaces\{{ interface }};
+use App\Models\{{ model }};
+
+class {{ class }} extends BaseRepository implements {{ interface }}
+{
+    public function __construct({{ model }} ${{ var }})
+    {
+        parent::__construct(${{ var }});
+    }
+}

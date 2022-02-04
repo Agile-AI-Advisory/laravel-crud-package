@@ -3,6 +3,7 @@
 namespace PurrDigital\LaravelCrudPackage;
 
 use PurrDigital\LaravelCrudPackage\Commands\GenerateCrudCommand;
+use PurrDigital\LaravelCrudPackage\Commands\MakeCrudControllerCommand;
 use PurrDigital\LaravelCrudPackage\Commands\MakeInterfaceCommand;
 use PurrDigital\LaravelCrudPackage\Commands\MakeRepositoryCommand;
 use Spatie\LaravelPackageTools\Package;
@@ -21,6 +22,7 @@ class LaravelCrudPackageServiceProvider extends PackageServiceProvider
             ->name('laravel-crud-package')
             ->hasCommand(GenerateCrudCommand::class)
             ->hasCommand(MakeInterfaceCommand::class)
-            ->hasCommand(MakeRepositoryCommand::class);
+            ->hasCommand(MakeRepositoryCommand::class)
+            ->hasCommand(MakeCrudControllerCommand::class);
     }
 }

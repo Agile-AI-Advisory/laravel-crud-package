@@ -1,0 +1,155 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\{{ model }};
+use App\Repositories\{{ model }}Repository;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Inertia\Inertia;
+
+class {{ class }} extends Controller
+{
+    private {{ model }}Repository ${{ var }}Repository;
+
+    /**
+     * @param {{ model }}Repository ${{ var }}Repository
+     */
+    public function __construct({{ model }}Repository ${{ var }}Repository)
+    {
+        $this->{{ var }}Repository = ${{ var }}Repository;
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Inertia\Response
+     * @throws AuthorizationException
+     */
+    public function index()
+    {
+        $this->authorize('viewAny', {{ model }}::class);
+
+        ${{ var }}s = $this->{{ var }}Repository->all([
+            'includeSoftDeleted' => false,
+            'with' => [],
+            'paginate' => true,
+            'paginationCount' => 15,
+            'page' => 1,
+            'paginationPath' => '{{ var }}s.datatable'
+        ]);
+
+        return Inertia::render('{{ model }}s/Index', [
+            '{{ var }}s' => $this->{{ var }}Repository->returnResource("{{ model }}", ${{ var }}s),
+        ]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Inertia\Response
+     * @throws AuthorizationException
+     */
+    public function create()
+    {
+        $this->authorize('create', {{ model }}::class);
+
+        return Inertia::render('{{ model }}s/Create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param Request $request
+     * @return RedirectResponse
+     * @throws AuthorizationException
+     */
+    public function store(Request $request)
+    {
+        $this->authorize('create', {{ model }}::class);
+
+        $this->{{ var }}Repository->create($request);
+
+        return redirect()->route('{{ var }}s.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param {{ model }} ${{ var }}
+     * @return \Inertia\Response
+     * @throws AuthorizationException
+     */
+    public function edit({{ model }} ${{ var }})
+    {
+        $this->authorize('update', ${{ var }});
+
+        return Inertia::render('{{ model }}s/Manage', [
+           '{{ var }}' => ${{ var }}
+        ]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param Request $request
+     * @param {{ model }} ${{ var }}
+     * @return RedirectResponse
+     * @throws AuthorizationException
+     */
+    public function update(Request $request, {{ model }} ${{ var }})
+    {
+        $this->authorize('update', ${{ var }});
+
+        $this->{{ var }}Repository->update($request, ${{ var }}->id);
+
+        return redirect()->route('{{ var }}s.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param {{ model }} ${{ var }}
+     * @return RedirectResponse
+     * @throws AuthorizationException
+     */
+    public function destroy({{ model }} ${{ var }})
+    {
+        $this->authorize('delete', ${{ var }});
+
+        $this->{{ var }}Repository->delete(${{ var }}->id);
+
+        return redirect()->route('{{ var }}s.index');
+    }
+
+    /**
+     * @param Request $request
+     * @return mixed
+     */
+    public function datatable(Request $request)
+    {
+        return $this->{{ class }}Repository->datatable($request, [], '{{ var }}s.datatable', function ($query, $filterWhereColumnValue, $search) {
+            if (!empty($search)) {
+                $query->where('{{ var }}s.id', 'LIKE', "%{$search}%")
+                    ->orWhere('{{ var }}s.name', 'LIKE', "%{$search}%");
+            }
+            if ( !empty($filterWhereColumnValue) ) {
+                $query = $query->where($filterWhereColumnValue);
+            }
+            return $query;
+        });
+    }
+}

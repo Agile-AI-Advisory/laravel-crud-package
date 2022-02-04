@@ -141,7 +141,7 @@ class {{ class }} extends Controller
      */
     public function datatable(Request $request)
     {
-        return $this->{{ class }}Repository->datatable($request, [], '{{ var }}s.datatable', function ($query, $filterWhereColumnValue, $search) {
+        return $this->{{ var }}Repository->datatable($request, [], '{{ var }}s.datatable', function ($query, $filterWhereColumnValue, $search) {
             if (!empty($search)) {
                 $query->where('{{ var }}s.id', 'LIKE', "%{$search}%")
                     ->orWhere('{{ var }}s.name', 'LIKE', "%{$search}%");

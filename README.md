@@ -39,10 +39,6 @@ Using the above command will generate the following,
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
 
-## Credits
-
-- [James](https://github.com/PurrDigital)
-
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.

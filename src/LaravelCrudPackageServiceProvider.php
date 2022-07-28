@@ -6,6 +6,7 @@ use PurrDigital\LaravelCrudPackage\Commands\GenerateCrudCommand;
 use PurrDigital\LaravelCrudPackage\Commands\MakeCrudControllerCommand;
 use PurrDigital\LaravelCrudPackage\Commands\MakeInterfaceCommand;
 use PurrDigital\LaravelCrudPackage\Commands\MakeRepositoryCommand;
+use PurrDigital\LaravelCrudPackage\Commands\UpdateRepositoryProviderCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -23,6 +24,7 @@ class LaravelCrudPackageServiceProvider extends PackageServiceProvider
             ->hasCommand(GenerateCrudCommand::class)
             ->hasCommand(MakeInterfaceCommand::class)
             ->hasCommand(MakeRepositoryCommand::class)
-            ->hasCommand(MakeCrudControllerCommand::class);
+            ->hasCommand(MakeCrudControllerCommand::class)
+            ->hasCommand(UpdateRepositoryProviderCommand::class);
     }
 }

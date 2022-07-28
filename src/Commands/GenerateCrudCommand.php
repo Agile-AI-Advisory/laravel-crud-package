@@ -67,6 +67,11 @@ class GenerateCrudCommand extends Command
             'model' => $this->argument('name'),
         ]);
 
+        $this->call('update:repository-provider', [
+            'repository' => $this->argument('name').'Repository',
+            'interface' => $this->argument('name').'Interface',
+        ]);
+
         return 0;
     }
 }

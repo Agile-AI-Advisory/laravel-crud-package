@@ -1,18 +1,18 @@
 {
     "name": "purrdigital/laravel-crud-package",
-    "description": "DO NOT DELETE. CRUD REPOSITORY PATTERN PACKAGE",
+    "description": "Opinionated Repository CRUD Generator",
     "keywords": [
         "PurrDigital",
         "laravel",
         "laravel-crud-package"
     ],
-    "homepage": "https://github.com/PurrDigital/laravel-crud-package",
+    "homepage": "https://github.com/Purr-Digital/laravel-crud-package",
     "license": "MIT",
     "authors": [
         {
-            "name": "James",
-            "email": "james.hayes@purrgroup.com",
-            "role": "Developer"
+            "name": "PurrDigital",
+            "email": "info@purrgroup.com",
+            "role": "Digital Agency"
         }
     ],
     "require": {

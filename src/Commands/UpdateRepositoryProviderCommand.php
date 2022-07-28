@@ -4,7 +4,6 @@ namespace PurrDigital\LaravelCrudPackage\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
-use Illuminate\Support\Pluralizer;
 use Illuminate\Support\Str;
 
 class UpdateRepositoryProviderCommand extends Command
@@ -115,5 +114,4 @@ class UpdateRepositoryProviderCommand extends Command
     {
         return base_path('app/Providers') .'/RepositoryServiceProvider.php';
     }
-
 }
